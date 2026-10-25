@@ -36,3 +36,12 @@
 - `02-keys-configured`: создан после настройки входа по SSH-ключам.
 - `03-ssh-hardened`: создан после ужесточения конфигурации SSH.
 - `04-dns-configured`: создан после настройки доменного имени.
+
+## 8. Веб-сервер
+- Устанавливаемый пакет: nginx
+- Путь к конфигурации ресурса: /etc/nginx/sites-available/devops-site
+- Каталог ресурса: /var/www/devops-site, владелец devops, права 755.
+- Путь к сертификату: /etc/ssl/certs/devops.crt, права 644.
+- Путь к ключу: /etc/ssl/private/devops.key, права 600, владелец root.
+- Команда формирования сертификата: sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ... -out ... -subj "/CN=devops.local" -addext "subjectAltName=DNS:devops.local"
+- Срок действия сертификата: 365 дней.
